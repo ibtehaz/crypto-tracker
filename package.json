@@ -12,13 +12,17 @@
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "html-react-parser": "^1.4.10",
+    "install": "^0.13.0",
     "millify": "^4.0.0",
     "moment": "^2.29.2",
-    "react": "^18.0.0",
+    "npm": "^8.6.0",
+    "react": "^16.14.0",
     "react-chartjs-2": "^4.1.0",
-    "react-dom": "^18.0.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^7.2.8",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -44,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.7.0"
   }
 }

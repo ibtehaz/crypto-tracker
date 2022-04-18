@@ -297,7 +297,8 @@ a:hover{
     width: 180px;
 }
 .news-card{
-    min-height: 300px !important;
+    min-height: 325px !important;
+    border-radius: 16px;
 }
 .news-image-container{
     display: flex !important;
@@ -363,12 +364,18 @@ width: 70%;
 }
 .crypto-card-container{
     min-height: 65vh !important;
+    padding: 20px;
 }
 .crypto-card{
     min-width: 250px;
 }
+.ant-card {
+    border-radius: 16px !important;
+}
+
 .crypto-card .crypto-image{
     width:35px;
+    
 }
 .select-timeperiod{
     width: 200px !important;

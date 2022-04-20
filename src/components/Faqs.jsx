@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Exchanges() {
+function Faqs() {
   return (
     <div>Exchanges</div>
   )
 }
 
-export default Exchanges
+export default Faqs

@@ -26,8 +26,10 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timeperiod, setTimeperiod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory } = useGetCryptoHistoryQuery(coinId, timeperiod);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({coinId, timeperiod});
   const cryptoDetails = data?.data?.coin;
+
+  console.log(cryptoDetails)
 
 
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
@@ -41,7 +43,7 @@ const CryptoDetails = () => {
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "All Time High",
-      value: `$ ${cryptoDetails?.allTimeHigh.price && millify(cryptoDetails?.allTimeHigh.price)}`,
+      value: `$ ${cryptoDetails?.allTimeHigh.price && millify(cryptoDetails?.allTimeHigh?.price)}`,
       icon: <ThunderboltOutlined />,
     },
     {
@@ -52,10 +54,10 @@ const CryptoDetails = () => {
       icon: <DollarCircleOutlined />,
     },
     {
-      title: "All-time-high(daily avg.)",
-      value: `$ ${
-        cryptoDetails?.allTimeHigh?.price &&
-        millify(cryptoDetails?.allTimeHigh?.price)
+      title: "Supply",
+      value: `${
+        cryptoDetails?.supply?.total &&
+        millify(cryptoDetails?.supply?.total)
       }`,
       icon: <TrophyOutlined />,
     },
@@ -168,7 +170,7 @@ const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3}>
-            <h3>What is {cryptoDetails?.name}?</h3>
+            What is {cryptoDetails?.name}?
             {cryptoDetails?.description && (
               <Text className="coin-desc-text">
                 {HTMLReactParser(cryptoDetails?.description)}

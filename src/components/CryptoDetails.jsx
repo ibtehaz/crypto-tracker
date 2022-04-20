@@ -13,6 +13,7 @@ import {
   CheckOutlined,
   NumberOutlined,
   ThunderboltOutlined,
+  LinkOutlined
 } from "@ant-design/icons";
 
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from "../services/cryptoApi";
@@ -29,8 +30,10 @@ const CryptoDetails = () => {
   const { data: coinHistory } = useGetCryptoHistoryQuery({coinId, timeperiod});
   const cryptoDetails = data?.data?.coin;
 
-  console.log(cryptoDetails)
+  if(isFetching) return <div>Loading...</div>;
 
+
+console.log(cryptoDetails);
 
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
 
@@ -54,12 +57,9 @@ const CryptoDetails = () => {
       icon: <DollarCircleOutlined />,
     },
     {
-      title: "Supply",
-      value: `${
-        cryptoDetails?.supply?.total &&
-        millify(cryptoDetails?.supply?.total)
-      }`,
-      icon: <TrophyOutlined />,
+      title: "Website",
+      value: <a href={cryptoDetails?.websiteUrl}>{cryptoDetails?.websiteUrl}</a>,
+      icon: <LinkOutlined />,
     },
   ];
 
@@ -102,7 +102,9 @@ const CryptoDetails = () => {
   ];
 
   return (
+    
     <Col className="coin-detail-container">
+      <LineChart coinHistory={coinHistory} coinName={cryptoDetails.name} currentPrice={millify(cryptoDetails.price)}  />
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
           {cryptoDetails?.name} Price ({cryptoDetails?.symbol})
@@ -112,17 +114,8 @@ const CryptoDetails = () => {
           cap and supply.
         </p>
       </Col>
-      <Select
-        defaultValue="7d"
-        className="select-timeperiod"
-        placeholder="Select a time period"
-        onChange={(value) => setTimeperiod(value)}
-      >
-        {time.map((date) => (
-          <Option key={date}>{date}</Option>
-        ))}
-      </Select>
-      {/* linechart.js */}
+
+      
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistics-heading">
@@ -142,6 +135,7 @@ const CryptoDetails = () => {
             ))}
           </Col>
         </Col>
+      
         <Col className="other-stats-info">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">
@@ -171,6 +165,7 @@ const CryptoDetails = () => {
         <Row className="coin-desc">
           <Title level={3}>
             What is {cryptoDetails?.name}?
+           
             {cryptoDetails?.description && (
               <Text className="coin-desc-text">
                 {HTMLReactParser(cryptoDetails?.description)}
@@ -182,6 +177,7 @@ const CryptoDetails = () => {
         </Row>
        
       </Col>
+      
       
     </Col>
   );

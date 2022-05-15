@@ -55,7 +55,10 @@ const Home = () => {
           <Link to="/cryptocurrencies">Show more</Link>
         </Title>
       </div>
+
+      {/* Display simple crypto list */}
       <Cryptocurrencies simplified />
+
       <div className="home-heading-container">
         <Title level={2} className="home-title">
           Latest Crypto News

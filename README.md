@@ -1,4 +1,22 @@
-# Getting Started with Crypto Tracker
+# Documentation
+
+Crypto Tracker is a web application that is able to monitor the real time prices of major crypto currencies and display them on a price chart. 
+
+### What is a cryptocurrency? 
+
+A cryptocurrency is a digital asset designed to work as a medium of exchange that uses strong cryptography to secure financial transactions, control the creation of additional units, and verify the transfer of assets. Cryptocurrencies run on a distributed public ledger called the blockchain, a record of all transactions updated and held by currency holders.
+
+### Tech Stack
+<li>React</li>
+<li>Ant Design</li>
+<li>Redux</li>
+<li>Chart.js</li>
+<li>Rapid API</li>
+<li>Github</li>
+<li>Netlify</li>
+
+
+## Getting Started with Crypto Tracker
 
 After cloning the repository, you can run:
 
@@ -43,4 +61,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Deployment
 
-Site is live and deployed to production on https://cryptotracker-live.netlify.app/
+Website is live and deployed to production on https://cryptotracker-live.netlify.app/

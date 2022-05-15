@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Typography, Menu, Avatar } from "antd";
+import { Layout, Button, Typography, Menu, Avatar } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
-  MoneyCollectOutlined,
+  QuestionCircleOutlined,
   BulbOutlined,
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
 import icon from "../images/crypto.png";
 
+const { Header } = Layout;
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
@@ -33,32 +34,32 @@ const Navbar = () => {
   }, [screenSize]);
 
   return (
-    <div className="nav-container">
-      <div className="logo-container">
-       
-        <Typography.Title level={2} className="logo">
-          <Link to="/">Crypto Tracker</Link> 
-        </Typography.Title>
-        <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
-      </div>
+    <Header>          
+      <Button className="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}><MenuOutlined /></Button>
       {activeMenu && (
-      <Menu theme="dark">
-        <Menu.Item icon={<HomeOutlined />}>
-          <Link to="/">Home</Link>
-        </Menu.Item>
-        <Menu.Item icon={<FundOutlined />}>
-          <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-        </Menu.Item>
-        <Menu.Item icon={<BulbOutlined />}>
-          <Link to="/news">News</Link>
-        </Menu.Item>
-        <Menu.Item icon={<MoneyCollectOutlined />}>
-          <Link to="/faqs">FAQs</Link>
-        </Menu.Item>
-        
-      </Menu>
+        <Menu
+          mode="horizontal"
+          theme="dark">
+          <Menu.Item>
+            <Link to="/">Crypto Tracker</Link>
+          </Menu.Item>
+
+          <Menu.Item icon={<HomeOutlined />}>
+            <Link to="/">Home</Link>
+          </Menu.Item>
+          <Menu.Item icon={<FundOutlined />}>
+            <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+          </Menu.Item>
+          <Menu.Item icon={<BulbOutlined />}>
+            <Link to="/news">News</Link>
+          </Menu.Item>
+          <Menu.Item icon={<QuestionCircleOutlined />}>
+            <Link to="/faqs">FAQs</Link>
+          </Menu.Item>
+
+        </Menu>
       )}
-    </div>
+    </Header>
   );
 };
 

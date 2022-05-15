@@ -39,18 +39,17 @@ const App = () => {
             </Switch>
           </div>
         </Layout>
-      <div className="footer">
-          <Typography.Title level={5} style={{color: 'white', textAlign:'center'}}>
-              Crypto Tracker <br/>&copy; 2022
-              </Typography.Title>
-              <Space>
-                <Link to="/">Home</Link>
-                <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-                <Link to="/faqs">FAQs</Link>
-                <Link to="/news">News</Link>
-                </Space>
-
-      </div>
+        <div className="footer">
+            <Typography.Title level={5} style={{color: 'white', textAlign:'center'}}>
+                Crypto Tracker <br/>&copy; 2022
+                </Typography.Title>
+                <Space>
+                  <Link to="/">Home</Link>
+                  <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+                  <Link to="/faqs">FAQs</Link>
+                  <Link to="/news">News</Link>
+                  </Space>
+        </div>
       </div>
     </div>
   );

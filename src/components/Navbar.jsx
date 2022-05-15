@@ -10,16 +10,23 @@ import {
 } from "@ant-design/icons";
 import icon from "../images/crypto.png";
 
+
+const centerStyle = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center'
+};
+
 const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="logo-container">
-       
+
         <Typography.Title level={2} className="logo">
-          <Link to="/">Crypto Tracker</Link> 
+          <Link to="/" >Crypto Tracker</Link> 
         </Typography.Title>
       </div>
-      <Menu theme="dark">
+      <Menu theme="dark" style={centerStyle} mode="horizontal">
         <Menu.Item icon={<HomeOutlined />}>
           <Link to="/">Home</Link>
         </Menu.Item>
@@ -32,7 +39,7 @@ const Navbar = () => {
         <Menu.Item icon={<MoneyCollectOutlined />}>
           <Link to="/faqs">FAQs</Link>
         </Menu.Item>
-        
+
       </Menu>
     </div>
   );

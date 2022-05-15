@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap');
+
 
 
 
@@ -56,9 +56,11 @@ a:hover{
     padding: 20px;
     align-items: center;
     width: 100%;
+    
 }
 .logo{
-    margin:0 0 0 15px;
+    margin:0 0 0 0;
+    
 }
 .logo a{
    color: white;

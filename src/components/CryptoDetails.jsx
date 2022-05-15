@@ -58,7 +58,7 @@ console.log(cryptoDetails);
     },
     {
       title: "Website",
-      value: <a href={cryptoDetails?.websiteUrl}>{cryptoDetails?.websiteUrl}</a>,
+      value: <a href={cryptoDetails?.websiteUrl}>{cryptoDetails?.name}</a>,
       icon: <LinkOutlined />,
     },
   ];

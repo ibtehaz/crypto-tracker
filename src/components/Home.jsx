@@ -54,10 +54,10 @@ const Home = () => {
       {/* Link is a React element to change the views within the single page application */}
       <div className="home-heading-container">
         <Title level={2} className="home-title">
-          Top 10 Cryptos In The World
+          Curated Coins List
         </Title>
         <Title level={3} className="show-more">
-          <Link to="/cryptocurrencies">Show more</Link>
+          <Link to="/cryptocurrencies">Top 100 Coins</Link>
         </Title>
       </div>
 

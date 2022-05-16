@@ -3,7 +3,7 @@ import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import { useGetCryptosQuery } from "../services/cryptoApi";
-import { Cryptocurrencies, News } from "../components";
+import { Cryptocurrencies } from "../components";
 
 const { Title, Paragraph } = Typography;
 const Home = () => {
@@ -20,36 +20,32 @@ const Home = () => {
 
       {/* Ant design layoutting process is used to align elements on the page.
       Reference: https://ant.design/components/grid/ */}
+      <div className="home-stats-container">
+        <Row justify="space-around">
+          <Col span={4}>
+            <Statistic title="Total Cryptos" value={globalStats.total} />
+          </Col>
+          <Col span={4}>
+            <Statistic
+              title="Total Market Cap"
+              value={millify(globalStats.totalMarketCap)}
+            />
+          </Col>
+          <Col span={4}>
+            <Statistic
+              title="Total 24h Volume"
+              value={millify(globalStats.total24hVolume)}
+            />
+          </Col>
+          <Col span={4}>
+            <Statistic
+              title="Total Markets"
+              value={millify(globalStats.totalMarkets)}
+            />
+          </Col>
+        </Row>
+      </div>
 
-      <Row justify="space-evenly">
-        <Col span={4}>
-          <Statistic title="Total Cryptos" value={globalStats.total} />
-        </Col>
-        <Col span={4}>
-          <Statistic
-            title="Total Exchanges"
-            value={millify(globalStats.totalExchanges)}
-          />
-        </Col>
-        <Col span={4}>
-          <Statistic
-            title="Total Market Cap"
-            value={millify(globalStats.totalMarketCap)}
-          />
-        </Col>
-        <Col span={4}>
-          <Statistic
-            title="Total 24h Volume"
-            value={millify(globalStats.total24hVolume)}
-          />
-        </Col>
-        <Col span={4}>
-          <Statistic
-            title="Total Markets"
-            value={millify(globalStats.totalMarkets)}
-          />
-        </Col>
-      </Row>
 
       {/* Link is a React element to change the views within the single page application */}
       <div className="home-heading-container">

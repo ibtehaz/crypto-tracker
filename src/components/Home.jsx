@@ -1,15 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import millify from "millify";
-import { Typography, Row, Col, Statistic } from "antd";
+import { Typography, Row, Col, Statistic, Card } from "antd";
 import { Link } from "react-router-dom";
-import { useGetCryptosQuery } from "../services/cryptoApi";
-import { Cryptocurrencies } from "../components";
+import { useGetCryptosByUUIDQuery } from "../services/cryptoApi";
 
 const { Title, Paragraph } = Typography;
 const Home = () => {
   // create hook to get data from api
-  const { data, isFetching } = useGetCryptosQuery(10);
-  const globalStats = data?.data?.stats;
+  // Searching by UUID of each coin rather than by symbol.
+  const preferred = [
+    {
+      name: "BTC",
+      uuid: "Qwsogvtv82FCd"
+    },
+    {
+      name: "ETH",
+      uuid: "razxDUgYGNAdQ"
+    },
+    {
+      name: "XRP",
+      uuid: "-l8Mn2pVlRs-p"
+    },
+    {
+      name: "SOL",
+      uuid: "zNZHO_Sjf"
+    },
+    {
+      name: "ADA",
+      uuid: "qzawljRxB5bYu"
+    },
+    {
+      name: "DOGE",
+      uuid: "a91GCGd_u96cF"
+    },
+    {
+      name: "SHIB",
+      uuid: "xz24e0BjL"
+
+    }
+  ]
+  let queryString = "";
+  //Build the query string before passing it to the request builder.
+  preferred.forEach(
+    (coin) => {
+      queryString += '&uuids[]=' + coin.uuid
+    });
+  const { data: cryptosList, isFetching } = useGetCryptosByUUIDQuery(queryString);
+  const globalStats = cryptosList?.data?.stats;
+  const [cryptos, setCryptos] = useState();
+
+  useEffect(() => {
+    setCryptos(cryptosList?.data?.coins);
+  },[cryptosList]);
+
   if (isFetching) return <div>Loading...</div>;
 
   return (
@@ -58,8 +101,31 @@ const Home = () => {
       </div>
 
       {/* Display simple crypto list */}
-      <Cryptocurrencies simplified />
+      <Row gutter={[32, 32]} className="crypto-card-container">
+        {cryptos?.map((currency) => (
+          <Col
+            xs={24}
+            sm={12}
+            lg={6}
+            className="crypto-card"
+            key={currency.uuid}
+          >
 
+            <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
+              <Card
+                title={`${currency.rank}. ${currency.name}`}
+                extra={<img alt={currency.name} className="crypto-image" src={currency.iconUrl} />}
+                hoverable
+                className='ant-card'
+              >
+                <p>Price: {millify(currency.price)}</p>
+                <p>Market Cap: {millify(currency.marketCap)}</p>
+                <p>Daily Change: {currency.change}%</p>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
       <div className="home-heading-container">
         <Title level={2} className="home-title">
           Website Tools

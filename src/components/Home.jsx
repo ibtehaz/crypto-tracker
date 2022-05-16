@@ -36,8 +36,12 @@ const Home = () => {
     {
       name: "SHIB",
       uuid: "xz24e0BjL"
-
-    }
+    },
+    {
+      name: "Bitcoin Cash",
+      uuid: "ZlZpzOJo43mIo"
+    },
+    
   ]
   let queryString = "";
   //Build the query string before passing it to the request builder.

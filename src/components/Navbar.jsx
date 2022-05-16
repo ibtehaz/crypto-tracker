@@ -19,7 +19,7 @@ const Navbar = () => {
         theme="dark">
         <Menu.Item>
           <Avatar src={icon} size="large" />
-          <Link to="/">Crypto Tracker</Link>
+          <Link to="/">&nbsp;Crypto Tracker</Link>
         </Menu.Item>
 
         <Menu.Item icon={<HomeOutlined />}>

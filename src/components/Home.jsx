@@ -53,6 +53,8 @@ const Home = () => {
   const globalStats = cryptosList?.data?.stats;
   const [cryptos, setCryptos] = useState();
 
+  console.log(globalStats);
+
   useEffect(() => {
     setCryptos(cryptosList?.data?.coins);
   },[cryptosList]);
@@ -70,7 +72,7 @@ const Home = () => {
       <div className="home-stats-container">
         <Row justify="space-around">
           <Col span={4}>
-            <Statistic title="Total Cryptos" value={globalStats.total} />
+            <Statistic title="Total Cryptos" value={globalStats.totalCoins} />
           </Col>
           <Col span={4}>
             <Statistic

@@ -11,48 +11,46 @@ import {
 } from "./components";
 import "./App.css";
 
+const { Content } = Layout;
+
 const App = () => {
   return (
-    <div className="app">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="main">
-        <Layout>
-          <div className="routes">
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/faqs">
-                <Faqs />
-              </Route>
-              <Route exact path="/cryptocurrencies">
-                <Cryptocurrencies />
-              </Route>
-              <Route exact path="/crypto/:coinId">
-                <CryptoDetails />
-              </Route>
-              <Route exact path="/news">
-                <News />
-              </Route>
-            </Switch>
-          </div>
-        </Layout>
+    <Layout className="layout">
+      <Navbar />
+      <Content style={{ padding: '0 50px' }}>
+        <div className="routes">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/faqs">
+              <Faqs />
+            </Route>
+            <Route exact path="/cryptocurrencies">
+              <Cryptocurrencies />
+            </Route>
+            <Route exact path="/crypto/:coinId">
+              <CryptoDetails />
+            </Route>
+            <Route exact path="/news">
+              <News />
+            </Route>
+          </Switch>
+        </div>
+      </Content>
       <div className="footer">
-          <Typography.Title level={5} style={{color: 'white', textAlign:'center'}}>
-              Crypto Tracker <br/>&copy; 2022
-              </Typography.Title>
-              <Space>
-                <Link to="/">Home</Link>
-                <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-                <Link to="/faqs">FAQs</Link>
-                <Link to="/news">News</Link>
-                </Space>
+        <Typography.Title level={5} style={{ color: 'white', textAlign: 'center' }}>
+          Crypto Tracker <br />&copy; 2022
+        </Typography.Title>
+        <Space>
+          <Link to="/">Home</Link>
+          <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+          <Link to="/faqs">FAQs</Link>
+          <Link to="/news">News</Link>
+        </Space>
 
       </div>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

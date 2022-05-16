@@ -3,8 +3,7 @@ import { Typography } from "antd";
 import millify from 'millify';
 import { useGetCryptoBySymbolQuery } from '../services/cryptoApi';
 
-const { Title } = Typography;
-const { Paragraph } = Typography;
+const { Title, Paragraph } = Typography;
 function Faqs(){
   const { data: btc, isFetching } = useGetCryptoBySymbolQuery("BTC");
   const btcPrice = btc?.data?.coins;
